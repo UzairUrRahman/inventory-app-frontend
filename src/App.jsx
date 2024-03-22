@@ -1,38 +1,85 @@
-import { Button, Col, Container, Form, Image } from "react-bootstrap";
-import "./App.css";
-import Logo from "./assets/img/checklistLogo.svg";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Link } from "react-router-dom";
-import EmployeeLogin from "./employee-login";
-import AdminLogin from "./admin-login";
-import Home from "./Home";
-import Tasks from "./Task";
-import Inventory from "./Inventory";
-import InventoryUpdate from "./InventoryUpdate";
-import ManageTaske from "./ManageTask";
-import ViewCheklist from "./ViewChecklist";
-import InventoryManagement from "./admin-inventory";
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import EmployeeLogin from './employee-login';
+import AdminLogin from './admin-login';
+import Home from './Home';
+import Tasks from './Task';
+import Inventory from './Inventory';
+import InventoryUpdate from './InventoryUpdate';
+import ManageTask from './ManageTask'; // Corrected typo
+import ViewChecklist from './ViewChecklist';
+import InventoryManagement from './admin-inventory';
+
+const useAuth = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token'); // Replace with your token key
+    if (token) {
+      // Perform any basic token validation here (e.g., format check)
+      setIsAuthenticated(true); // Assuming basic validation passes
+    }
+  }, []);
+
+  return { isAuthenticated };
+};
 
 function App() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <>
-    <BrowserRouter basename='/'>
-      <div>
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/employee-login" element={<EmployeeLogin/>} />
-          <Route path="/admin-login" element={<AdminLogin/>} />
-          <Route path="/task-list" element={<Tasks/>} />
-          <Route path="/inventory" element={<Inventory/>} />
-          <Route path="/inventory-update" element={<InventoryUpdate/>} />
-          <Route path="/manage-task" element={<ManageTaske/>} />
-          <Route path="/view-checklist" element={<ViewCheklist/>} />
-          <Route path="/inventory-management" element={<InventoryManagement/>} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+      <BrowserRouter basename="/">
+        <div>
+          {/* Navigation (optional) */}
+          
 
-      
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/employee-login" element={<EmployeeLogin />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
+
+            {/* Protected routes */}
+            <Route
+              path="/task-list"
+              element={
+                isAuthenticated ? <Tasks /> : <Navigate to="/" replace />
+              }
+            />
+            <Route
+              path="/inventory"
+              element={
+                isAuthenticated ? <Inventory /> : <Navigate to="/" replace />
+              }
+            />
+            <Route
+              path="/inventory-update"
+              element={
+                isAuthenticated ? <InventoryUpdate /> : <Navigate to="/" replace />
+              }
+            />
+            <Route
+              path="/manage-task"
+              element={
+                isAuthenticated ? <ManageTask /> : <Navigate to="/" replace />
+              }
+            />
+            <Route
+              path="/view-checklist"
+              element={
+                isAuthenticated ? <ViewChecklist /> : <Navigate to="/" replace />
+              }
+            />
+            <Route
+              path="/inventory-management"
+              element={
+                isAuthenticated ? <InventoryManagement /> : <Navigate to="/" replace />
+              }
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   );
 }

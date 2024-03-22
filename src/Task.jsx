@@ -1,9 +1,33 @@
-
 import { Button, Col, Form, Image, Row } from 'react-bootstrap';
-import Layout from './components/layout/Layout'
+import { useState, useEffect } from 'react';
+import Layout from './components/layout/Layout';
 import Header from './components/layout/Header';
+
 const Tasks = () => {
-  const array = new Array(10).fill(null);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/employee/task`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        if (!response.ok) {
+          throw new Error('Failed to fetch tasks');
+        }
+        const data = await response.json();
+        setTasks(data);
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      }
+    };
+
+    fetchTasks();
+  }, []); // Empty dependency array to run the effect only once when the component mounts
+
   return (
     <>
       <Layout>
@@ -21,12 +45,20 @@ const Tasks = () => {
             </div>
 
             <Row>
-              {array.map((_, index) => (
+              {tasks.map((taskGroup, index) => (
                 <Col key={index} className='mt-3' lg={3}>
-                  <div className='d-flex align-items-center'>
-                    <Form.Check id={`option${index + 1}`} aria-label={`option ${index + 1}`} />
-                    <label htmlFor={`option${index + 1}`} className='paragraph ms-2'>Lorem Ipsum Task List {index + 1}</label>
-                  </div>
+                  {taskGroup.tasks.map((task, taskIndex) => (
+                    <div key={task._id} className='d-flex align-items-center'>
+                      <Form.Check
+                        id={`option${index + 1}-${taskIndex + 1}`}
+                        aria-label={`option ${index + 1}`}
+                        checked={task.completed}
+                      />
+                      <label htmlFor={`option${index + 1}-${taskIndex + 1}`} className='paragraph ms-2'>
+                        {task.title}
+                      </label>
+                    </div>
+                  ))}
                 </Col>
               ))}
             </Row>
