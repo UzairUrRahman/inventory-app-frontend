@@ -22,7 +22,7 @@ const Sidebar = () => {
                             Inventory</Link>
                     </Nav.Item>
                     <Nav.Item as="li">
-                        <Link className={"sidemenu"} to="#"> <span><i className="fa fa-user" aria-hidden="true"></i></span>
+                        <Link className={currentPath == '/profile' ? "sidemenu Active" : "sidemenu"}  to="/profile"> <span><i className="fa fa-user" aria-hidden="true"></i></span>
                             My Profile</Link>
                     </Nav.Item>
                     <Nav.Item as="li">
