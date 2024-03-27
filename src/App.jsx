@@ -16,9 +16,12 @@ const useAuth = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token'); // Replace with your token key
+    console.log({token});
     if (token) {
       // Perform any basic token validation here (e.g., format check)
       setIsAuthenticated(true); // Assuming basic validation passes
+    }else{
+      setIsAuthenticated(false);
     }
   }, []);
 
@@ -26,7 +29,18 @@ const useAuth = () => {
 };
 
 function App() {
-  const { isAuthenticated } = useAuth();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const token = localStorage.getItem('token')
+  useEffect(() => {
+    const token = localStorage.getItem('token'); // Replace with your token key
+    console.log({token});
+    if (token) {
+      // Perform any basic token validation here (e.g., format check)
+      setIsAuthenticated(true); // Assuming basic validation passes
+    }else{
+      setIsAuthenticated(false);
+    }
+  }, [token]);
 
   return (
     <>
@@ -66,7 +80,7 @@ function App() {
               }
             />
             <Route
-              path="/view-checklist"
+              path="/view-checklist/:id"
               element={
                 isAuthenticated ? <ViewChecklist /> : <Navigate to="/" replace />
               }
