@@ -33,9 +33,7 @@ const Tasks = () => {
       <Layout>
         <div className='p-5'>
           <Header />
-          <h5 className='heading mt-4'>Today’s Tasks List</h5>
-          <p className='paragraph'>You’ve logged in with your bartender profile, please check the below tasks assigned to you by the admin.</p>
-
+          <br></br><h5 className='heading mt-4'>Today’s Tasks List</h5><br></br>
           <div className='card'>
             <div className='d-flex align-items-center justify-content-between'>
               <h6 className='subHeading'>Date: 13-03-2024</h6>

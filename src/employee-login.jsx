@@ -57,10 +57,6 @@ function EmployeeLogin() {
                                 }
                             </span>
                         </div>
-
-                        <div>
-                            <Link to={"/"} className="text-muted">Forgot Password</Link>
-                        </div>
                         <Button className="btnPrimary mt-4 w-100" onClick={handleLogin}>
                             Login
                         </Button>

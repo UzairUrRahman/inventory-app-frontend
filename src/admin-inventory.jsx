@@ -71,8 +71,8 @@ const InventoryManagement = () => {
           <div>
             <h5 className="heading mt-4">Inventory</h5>
             <p className="paragraph mb-0">
-              You are now seeing the inventory, you can update the inventory,
-              set par, and get emails about the inventory.
+              You are now seeing the inventory, you can update the inventory and
+              set the par.
             </p>
           </div>
           <Button variant="dark" onClick={() => setShowModal(true)}>Create Inventory</Button>
@@ -102,15 +102,15 @@ const InventoryManagement = () => {
             <Form.Group controlId="itemName">
               <Form.Label>Item Name</Form.Label>
               <Form.Control type="text" placeholder="Enter item name" value={itemName} onChange={(e) => setItemName(e.target.value)} />
-            </Form.Group>
+            </Form.Group><br></br>
             <Form.Group controlId="par">
               <Form.Label>Par</Form.Label>
               <Form.Control type="number" placeholder="Enter par value" value={par} onChange={(e) => setPar(e.target.value)} />
-            </Form.Group>
+            </Form.Group><br></br>
             <Form.Group controlId="remaining">
               <Form.Label>Available Stock</Form.Label>
               <Form.Control type="number" placeholder="Enter remaining value" value={remaining} onChange={(e) => setRemaining(e.target.value)} />
-            </Form.Group>
+            </Form.Group><br></br>
           </Form>
         </Modal.Body>
         <Modal.Footer>

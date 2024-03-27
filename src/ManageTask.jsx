@@ -103,7 +103,7 @@ const ManageTasks = () => {
         <div className='d-flex align-items-center justify-content-between mt-4 mb-3'>
           <div>
             <h5 className='heading mt-4'>Manage Tasks</h5>
-            <p className='paragraph mb-0'>You’ve logged as an admin, please take a look at the below tasks assigned by you to your employees.</p>
+            <p className='paragraph mb-0'>You have logged in as an Admin. Feel free to add checklist and update the inventory.</p><br></br>
           </div>
           <div>
             <Button className='btnPrimary' onClick={() => setShowModal(true)}>Create New Task</Button>
@@ -146,14 +146,14 @@ const ManageTasks = () => {
             <Form.Group controlId='taskName'>
               <Form.Label>Checklist Name</Form.Label>
               <Form.Control type='text' placeholder='Enter checklist name' value={taskName} onChange={(e) => setTaskName(e.target.value)} />
-            </Form.Group>
+            </Form.Group><br></br>
             <Form.Group controlId='assignRole'>
               <Form.Label>Assign Role</Form.Label>
               <Form.Control as='select' value={assignRole} onChange={(e) => setAssignRole(e.target.value)}>
                 <option value='cook'>Cook</option>
                 <option value='bartender'>Bartender</option>
               </Form.Control>
-            </Form.Group>
+            </Form.Group><br></br>
             <Form.Group controlId='taskInputs'>
               <Form.Label>Tasks</Form.Label>
               {taskInputs.map((task, index) => (
@@ -166,8 +166,9 @@ const ManageTasks = () => {
                   <Button variant='danger' className='ms-2' onClick={() => handleRemoveTaskInput(index)}>Remove</Button>
                 </div>
               ))}
+              <br></br>
               <Button variant='secondary mt-2' onClick={handleAddTaskInput}>Add New Task</Button>
-            </Form.Group>
+            </Form.Group><br></br>
           </Form>
         </Modal.Body>
         <Modal.Footer>

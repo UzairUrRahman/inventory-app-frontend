@@ -10,9 +10,7 @@ const Inventory = () => {
       <Layout>
         <div className='p-5'>
           <Header />
-          <h5 className='heading mt-4'>Inventory</h5>
-          <p className='paragraph'>As a bartender, you do have access that you can update the inventory.</p>
-
+          <h5 className='heading mt-4'>Inventory</h5><br></br>
           <div className='card  mb-3'>
             <div className='d-flex align-items-center justify-content-between'>
               <h6 className='subHeading'>Alcoholic Beverages</h6>

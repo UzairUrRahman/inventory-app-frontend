@@ -21,10 +21,6 @@ const Sidebar = () => {
                             Inventory</Link>
                     </Nav.Item>
                     <Nav.Item as="li">
-                        <Link className={"sidemenu"} to="#"> <span><i className="fa fa-user" aria-hidden="true"></i></span>
-                            My Profile</Link>
-                    </Nav.Item>
-                    <Nav.Item as="li">
                         <Link className={"sidemenu"} to="/"> <span><i class="fa fa-sign-out" aria-hidden="true"></i>
                         </span>
                             Logout</Link>

@@ -65,7 +65,7 @@ const InventoryTable = ({ inventoryData , setLoading, loading}) => {
             <th style={{ width: "150px" }}>Item Name</th>
             <th style={{ width: "150px" }}>Par</th>
             <th style={{ width: "150px" }}>Available Stock</th>
-            <th style={{ width: "150px" }}>order</th>
+            <th style={{ width: "150px" }}>Order</th>
             <th style={{ width: "150px" }}>Actions</th>
           </tr>
         </thead>
