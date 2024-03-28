@@ -10,6 +10,7 @@ import InventoryUpdate from './InventoryUpdate';
 import ManageTask from './ManageTask'; // Corrected typo
 import ViewChecklist from './ViewChecklist';
 import InventoryManagement from './admin-inventory';
+import EmployeeManagement from './AddEmployee';
 
 const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -71,6 +72,12 @@ function App() {
               path="/inventory-update"
               element={
                 isAuthenticated ? <InventoryUpdate /> : <Navigate to="/" replace />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                isAuthenticated ? <EmployeeManagement /> : <Navigate to="/" replace />
               }
             />
             <Route
