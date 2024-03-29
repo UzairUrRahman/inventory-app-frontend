@@ -26,16 +26,6 @@ const Header = () => {
     };
     return (
         <>
-            <div className='d-flex align-items-center justify-content-between'>
-                <div className='position-relative'>
-                    <Form.Control className='' placeholder='Search' style={{paddingLeft: '40px'}} />
-                    <span className='searchIcon'> <i className="fa fa-search" aria-hidden="true"></i></span>
-                </div>
-                <div className='pointer' onClick={handleShow}>
-                    <Image src={Avatar} alt='' className='img-fluid' />
-                </div>
-            </div>
-
             <Modal centered show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Upload Image</Modal.Title>

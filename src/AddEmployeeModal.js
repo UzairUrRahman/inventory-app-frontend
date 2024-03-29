@@ -44,19 +44,19 @@ const AddEmployeeModal = ({ handleClose }) => {
         {error && <p>{error}</p>}
         <Form.Group controlId="formEmail">
           <Form.Label>Email:</Form.Label>
-          <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} required /><br></br>
         </Form.Group>
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
-          <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} required /><br></br>
         </Form.Group>
         <Form.Group controlId="formCategory">
           <Form.Label>Category:</Form.Label>
-          <Form.Control as="select" value={category} onChange={(e) => setCategory(e.target.value)} required>
+          <Form.Control as="select" value={category} onChange={(e) => setCategory(e.target.value)} required><br></br>
             <option value="">Select Category</option>
             <option value="cook">Cook</option>
             <option value="bartender">Bartender</option>
-          </Form.Control>
+          </Form.Control><br></br>
         </Form.Group>
         <Button variant="dark" className="my-3" type="submit">
           Submit

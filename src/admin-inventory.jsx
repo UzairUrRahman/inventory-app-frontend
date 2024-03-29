@@ -39,7 +39,7 @@ const InventoryManagement = () => {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/admin/inventory`, {
         itemName,
         par,
-        remaining
+        remaining :par
       }, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -107,10 +107,10 @@ const InventoryManagement = () => {
               <Form.Label>Par</Form.Label>
               <Form.Control type="number" placeholder="Enter par value" value={par} onChange={(e) => setPar(e.target.value)} />
             </Form.Group><br></br>
-            <Form.Group controlId="remaining">
+            {/* <Form.Group controlId="remaining">
               <Form.Label>Available Stock</Form.Label>
               <Form.Control type="number" placeholder="Enter remaining value" value={remaining} onChange={(e) => setRemaining(e.target.value)} />
-            </Form.Group><br></br>
+            </Form.Group><br></br> */} 
           </Form>
         </Modal.Body>
         <Modal.Footer>

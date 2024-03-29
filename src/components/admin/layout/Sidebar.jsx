@@ -23,7 +23,7 @@ const Sidebar = () => {
                     </Nav.Item>
                     <Nav.Item as="li">
                         <Link className={currentPath == '/profile' ? "sidemenu Active" : "sidemenu"}  to="/profile"> <span><i className="fa fa-user" aria-hidden="true"></i></span>
-                            My Profile</Link>
+                            Manage Roles</Link>
                     </Nav.Item>
                     <Nav.Item as="li">
                         <Link className={"sidemenu"} to="/"> <span><i class="fa fa-sign-out" aria-hidden="true"></i>
