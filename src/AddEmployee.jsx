@@ -17,7 +17,7 @@ const EmployeeManagement = () => {
     const fetchEmployees = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/employee`, {
+        const response = await axios.get(`http://api.scorerswv.com/employee`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

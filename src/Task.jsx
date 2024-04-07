@@ -13,7 +13,7 @@ const Tasks = () => {
       if(loading){
         try {
           const token = localStorage.getItem('token');
-          const response = await fetch(`${process.env.REACT_APP_BASE_URL}/employee/task`, {
+          const response = await fetch(`http://api.scorerswv.com/employee/task`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -46,7 +46,7 @@ const Tasks = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/employee/task/complete`, {
+      const response = await fetch(`http://api.scorerswv.com/employee/task/complete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

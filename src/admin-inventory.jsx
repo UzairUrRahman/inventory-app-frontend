@@ -18,7 +18,7 @@ const InventoryManagement = () => {
     const fetchInventoryData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/admin/inventory`, {
+        const response = await axios.get(`http://api.scorerswv.com/admin/inventory`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -36,7 +36,7 @@ const InventoryManagement = () => {
   const handleCreateInventory = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/admin/inventory`, {
+      const response = await axios.post(`http://api.scorerswv.com/admin/inventory`, {
         itemName,
         par,
         remaining :par

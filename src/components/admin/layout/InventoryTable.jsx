@@ -23,7 +23,7 @@ const InventoryTable = ({ inventoryData , setLoading, loading}) => {
   const updateInventory = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/admin/inventory/${selectedItem._id}`, {
+      const response = await fetch(`http://api.scorerswv.com/admin/inventory/${selectedItem._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
