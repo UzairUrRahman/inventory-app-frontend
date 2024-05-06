@@ -13,7 +13,7 @@ const Tasks = () => {
       if(loading){
         try {
           const token = localStorage.getItem('token');
-          const response = await fetch(`http://api.scorerswv.com/employee/task`, {
+          const response = await fetch(`${process.env.REACT_APP_BASE_URL}/employee/task`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -46,7 +46,7 @@ const Tasks = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://api.scorerswv.com/employee/task/complete`, {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/employee/task/complete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,6 +59,7 @@ const Tasks = () => {
       }
       // Reset checked tasks after successful submission
       setCheckedTasks([]);
+      setLoading(true);
       // Refresh tasks data
       const updatedTasks = await response.json();
     } catch (error) {
@@ -72,16 +73,15 @@ const Tasks = () => {
         <div className='p-5'>
           <Header />
           <br></br><h5 className='heading mt-4'>Today’s Tasks List</h5><br></br>
-          <div className='card'>
+          {tasks?.map((taskGroup, index) => (
+          <div className='card mt-4 '>
             <div className='d-flex align-items-center justify-content-between'>
-              <h6 className='subHeading'>Date: 13-03-2024</h6>
+              <h6 className='subHeading'>{taskGroup.taskName}</h6>
               <div>
                 <Button className='btnPrimary' onClick={handleSubmit}>Submit</Button>
               </div>
             </div>
-
             <Row>
-              {tasks?.map((taskGroup, index) => (
                 <React.Fragment key={index}>
                   {taskGroup.tasks?.map(task => (
                     <Col key={task._id} className='mt-3' lg={3} md={3}>
@@ -99,9 +99,10 @@ const Tasks = () => {
                     </Col>
                   ))}
                 </React.Fragment>
-              ))}
+              
             </Row>
           </div>
+         ))}
         </div>
       </Layout>
     </>

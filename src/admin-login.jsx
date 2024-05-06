@@ -14,7 +14,7 @@ function AdminLogin() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post(`http://api.scorerswv.com/admin/login`, {
+            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/admin/login`, {
                 email,
                 password
             });

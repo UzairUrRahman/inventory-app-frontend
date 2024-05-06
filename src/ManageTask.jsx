@@ -49,7 +49,7 @@ const ManageTasks = () => {
         tasks: taskInputs.map(task => ({ title: task.trim() }))
       };
 
-      const response = await axios.post(`http://api.scorerswv.com/admin/task`, payload, config);
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/admin/task`, payload, config);
       if (response.status === 201) {
         setTasks({
           ...tasks,
@@ -72,9 +72,9 @@ const ManageTasks = () => {
           }
         };
 
-        const allTasksPromise = axios.get(`http://api.scorerswv.com/admin/task`, config);
-        const completedTasksPromise = axios.get(`http://api.scorerswv.com/admin/task?status=completed`, config);
-        const incompleteTasksPromise = axios.get(`http://api.scorerswv.com/admin/task?status=incomplete`, config);
+        const allTasksPromise = axios.get(`${process.env.REACT_APP_BASE_URL}/admin/task`, config);
+        const completedTasksPromise = axios.get(`${process.env.REACT_APP_BASE_URL}/admin/task?status=completed`, config);
+        const incompleteTasksPromise = axios.get(`${process.env.REACT_APP_BASE_URL}/admin/task?status=incomplete`, config);
 
         const [allTasksResponse, completedTasksResponse, incompleteTasksResponse] = await Promise.all([
           allTasksPromise,
