@@ -12,7 +12,7 @@ const AddEmployeeModal = ({ handleClose }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/employee/register`, {
+      const response = await axios.post(`http://api.scorerswv.com/employee/register`, {
         email,
         password,
         category

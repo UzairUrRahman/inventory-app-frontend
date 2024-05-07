@@ -12,7 +12,7 @@ const ViewChecklist = () => {
     const fetchChecklist = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/admin/task/${id}`, {
+        const response = await fetch(`http://api.scorerswv.com/admin/task/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

@@ -14,7 +14,7 @@ const Inventory = () => {
     const fetchInventoryData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/employee/inventory`, {
+        const response = await axios.get(`http://api.scorerswv.com/employee/inventory`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -35,7 +35,7 @@ const Inventory = () => {
   const handleUpdateInventory = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/employee/inventory/${selectedItem._id}`, {
+      const response = await axios.put(`http://api.scorerswv.com/employee/inventory/${selectedItem._id}`, {
         remaining: newRemaining
       }, {
         headers: {
