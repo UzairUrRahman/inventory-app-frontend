@@ -1,12 +1,27 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Col, Form, Row } from 'react-bootstrap';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import Layout from './components/admin/layout/Layout';
 import Header from './components/layout/Header';
+import axios from 'axios';
 
 const ViewChecklist = () => {
   const [checklist, setChecklist] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate();
+  const handleOnDelete = async () => {
+    try{
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/admin/task/delete/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }  
+      });
+      alert(response.data.message)
+       navigate('/manage-task');
+    }catch(error){
+      alert(error.response.data.message ?? error.message);
+    }
+  }
 
   useEffect(() => {
     const fetchChecklist = async () => {
@@ -38,7 +53,11 @@ const ViewChecklist = () => {
           <>
             <h5 className='heading mt-4'>Checklist  {checklist.taskName}</h5>
             <p className='paragraph'>You are now seeing the details of checklist {checklist.taskName}.</p>
-
+            <div className='d-flex align-items-center justify-content-end mb-1'>
+                <div className='paragraph'>
+                  <Button className="btn-danger my-2" onClick={handleOnDelete}>Delete</Button>
+                </div>
+              </div>
             <div className='card'>
               <div className='d-flex align-items-center justify-content-between mb-1'>
                 <h6 className='subHeading'>Assigned To Role:</h6>
