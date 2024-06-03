@@ -11,7 +11,7 @@ const ViewChecklist = () => {
   const navigate = useNavigate();
   const handleOnDelete = async () => {
     try{
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/admin/task/delete/${id}`, {
+      const response = await axios.get(`http://api.scorerswv.com/admin/task/delete/${id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }  
